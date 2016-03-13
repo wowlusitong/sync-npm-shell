@@ -15,7 +15,7 @@ DIR=`ls`
 for dir in ${DIR}; do
   if [ -d ${dir} ]; then
     cd ${dir}
-    npm --registry=http://localhost:5984/registry/_design/app/_rewrite publish
+    npm --registry=http://localhost:5984/registry/_design/app/_rewrite publish --force
     cd ..
   fi
 done
