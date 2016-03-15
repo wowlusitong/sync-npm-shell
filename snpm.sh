@@ -1,15 +1,15 @@
-NAME=$1
-DIRNAME=${NAME}`date +%s`
-if [ -z ${NAME} ]; then
+#!/bin/bash
+DIRNAME=temp`date +%s`
+if [ -z $1 ]; then
   echo 'error: 没有输入包名'
-  kill 0
+  exit 0
 fi
 if [ ! -d ${DIRNAME} ]; then
   mkdir ${DIRNAME}
 fi
 cd ${DIRNAME}
 npm init --force
-npm --registry=https://registry.npm.taobao.org install ${NAME}
+npm --registry=https://registry.npm.taobao.org install $@
 cd node_modules
 DIR=`ls`
 for dir in ${DIR}; do
